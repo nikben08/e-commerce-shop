@@ -1,0 +1,201 @@
+﻿<!DOCTYPE>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="description" content=@ViewData["Description"] />
+    <meta name="keywords" content=@ViewData["Keywords"]/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/contact.css" />
+    <link rel="stylesheet" href="~/css/about_us.css" />
+    <link rel="stylesheet" href="~/css/quality_certificates.css" />
+    <link rel="stylesheet" href="~/css/catalog.css" />
+    <link rel="stylesheet" href="~/css/detail_view.css" />
+    <link rel="stylesheet" href="~/css/mklb.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/mobile_menu.css" />
+    <script src="https://kit.fontawesome.com/8b2df3cdd4.js" crossorigin="anonymous"></script>
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+    <header class="d-none d-sm-none d-md-block">
+        <div class="row no-gutters">
+            <div class="col-md-3 navbar-logo">
+                <a href="/"><img src="/img/logo.png" /></a>
+            </div>
+            <div class="col-md-5 navbar" >
+                <ul class="navbar-nav">
+                    <li><a href="/">ANASAYFA</a></li>
+                    <li><a href="/aboutUs">HAKKIMIZDA</a></li>
+                    <li><a href="/catalog">ÜRÜNLERİMİZ</a></li>
+                    <li><a href="/qualitycertificates">KALİTE BELGELERİMİZ</a></li>
+                    <li><a href="/contact">İLETİŞİM</a></li>
+                </ul>   
+            </div>
+            <div class="col-md-2 offset-md-1 desktop_language-select">
+                <div id="google_translate_element"></div>
+            </div>
+        </div>
+    </header>
+
+    <header class="d-block d-sm-block d-md-none">
+        <div class="hamburger-menu">            
+            <input id="menu__toggle" type="checkbox" />
+            <label class="menu__btn" for="menu__toggle">
+              <span></span>
+            </label>
+            <div class="mobile_language-select">
+                <div id="google_translate_element"></div>
+            </div>
+
+            <ul class="menu__box">
+              <li><a class="menu__item" href="/">ANASAYFA</a></li>
+              <li><a class="menu__item" href="/aboutus">HAKKIMIZDA</a></li>
+              <li><a class="menu__item" href="/catalog">ÜRÜNLERİMİZ</a></li>
+              <li><a class="menu__item" href="/qualitycertificates">KALİTE BELGELERİMİZ</a></li>
+              <li><a class="menu__item" href="/contact">İLETİŞİM</a></li>
+              <li>
+                <div class="row menu__footer">
+                    <div class="col-3">
+                        <a href="https://www.instagram.com/isimax.aydinlatmaa/"><i class="fa-brands fa-instagram fa-xl"></i></a>
+                    </div>
+                    <div class="col-3">
+                        <i class="fa-brands fa-facebook fa-xl"></i>
+                    </div>
+                    <div class="col-3">
+                        <i class="fa-brands fa-linkedin-in fa-xl"></i>
+                    </div>
+                    <div class="col-3">
+                        <i class="fa-brands fa-youtube fa-xl"></i>
+                    </div>
+                </div>
+              </li>
+            </ul>
+
+            <div class="catalog-mobile_logo">
+                <img src="/img/logo_mobile.png" />
+            </div>
+          </div>
+
+    </header>
+
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+<footer class="border-top footer text-muted">
+        <div class="container">
+           <div class="row">
+               <div class="col-md-3">
+                  <ul>
+                    <li><strong>MERKEZ</strong></li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                         +90 212 485 60 54
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                         +90 212 485 37 13
+                    </li>
+                    <li>
+                        <i class="fa fa-mobile" aria-hidden="true"></i>
+                         +90 539 460 57 33
+                    </li>
+                    <li>
+                        <i class="fa fa-mobile" aria-hidden="true"></i>
+                         +90 531 937 33 16
+                    </li>
+                    <li translate="no">
+                        <i class="fa-solid fa-envelope"></i> 
+                        info@isimaxayadinlatma.com
+                    </li>
+                    <li translate="no">
+                        <i class="fa-solid fa-location-dot"></i>
+                        İkıtelli Organize Sanayi Böl. <br />
+                        isteks Sanayi Sitesi E2 Blok<br />
+                        No:3 - 7 Başakşehir - İSTANBUL
+                    </li>
+                  </ul>
+               </div> 
+
+               <div class="col-md-3 footer-right-info">
+                  <ul>
+                    <li><strong>SHOWROOM</strong></li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                         +90 212 243 48 08
+                    </li>
+                    <li>
+                        <i class="fa fa-mobile" aria-hidden="true"></i>
+                         +90 531 937 33 15
+                    </li>
+                    <li translate="no">
+                        <i class="fa-solid fa-envelope"></i> magaza@isimaxaydinlatma.com
+                    </li>
+                    <li translate="no">
+                        <i class="fa-solid fa-location-dot"></i>
+                        Bereketzade Mh. Okçu Musa Cd. <br />
+                        No:11/A Bank Çarşı B-6<br />
+                        Şişhane / İSTANBUL
+                    </li>
+                  </ul>
+               </div>
+              
+               <div class="col-md-2">
+                   <ul>
+                       <li><strong>MENU</strong></li>
+                       <li><a href="/">ANASAYFA</a></li>
+                       <li><a href="/AboutUs">HAKKIMIZDA</a></li>
+                       <li><a href="/catalog">ÜRÜNLERİMİZ</a></li>
+                       <li><a href="/qualitycertificates"</a></li>
+                       <li><a href="/contact">İLETİŞİM</a></li>
+                   </ul>
+               </div>
+               <div class="col-md-2 offset-md-2 social_medya">
+                    <div class="row">
+                        <div class="col-md-12 d-none d-md-block">
+                            <img src="/img/logo.png" />
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-3 col-3">
+                            <a href="https://www.instagram.com/isimax.aydinlatmaa/"><i class="fa-brands fa-instagram fa-2x"></i></a>
+                        </div>
+                        <div class="col-md-3 col-3">
+                            <i class="fa-brands fa-facebook fa-2x"></i> 
+                        </div>
+                        <div class="col-md-3 col-3">
+                            <i class="fa-brands fa-linkedin-in fa-2x"></i>
+                        </div>
+                        <div class="col-md-3 col-3">
+                            <i class="fa-brands fa-youtube fa-2x"></i> 
+                        </div>
+                    </div>
+
+               </div>
+           </div>
+           <div class="row mt-5">
+               <div class="col-md-12 copyright">
+                   <i class="fa-solid fa-copyright"></i> 2022 Işımaxaydınlatma Tüm Hakları Saklıdır
+               </div>
+           </div>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({pageLanguage: 'tr'}, 'google_translate_element');
+        }
+    </script>       
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/catalog.js" asp-append-version="true"></script>
+    <script src="~/js/mklb.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

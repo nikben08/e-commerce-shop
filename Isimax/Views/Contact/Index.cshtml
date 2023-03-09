@@ -1,0 +1,54 @@
+﻿@{
+    Layout =  "~/Views/Shared/_CatalogLayout.cshtml";
+    ViewData["Title"] = "İletişim";
+    ViewData["Description"] = "Aydınlatma ürünleri için bizim ile iletişime geçebilirsiniz.";
+    ViewData["Keywords"] = "İletişim,Contact";
+}
+
+<div class="row">
+    <div class="col-md-12 header-banner">
+        <div class="title">İLETİŞİM</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="contact-form col-md-12">
+        <form action="/Contact/AddContactForm" method="post">
+            <div class="row mt-3">
+                <div class="col-md-6 offset-md-3">
+                    <label>Adı ve Soyadı</label>
+                    <input name="Name" type="text" required />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6 offset-md-3">
+                    <label for="phone">Telefon Numaranız</label>
+                    <input name="Tel" placeholder="( _ _ _ ) _ _ _ - _ _ _ _" data-slots="_" data-accept="\w" size="9" required />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6 offset-md-3">
+                    <label>E-mail</label>
+                    <input name="Email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6 offset-md-3">
+                    <label>Mesaj</label>
+                    <textarea name="Msg" class="wide-input" required></textarea>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6 offset-md-3">
+                    <button type="submit">Mesaj gönder</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-12">
+      <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A626859e73802675e6c6126510cd3b329f9b3ced07f16e7aed82e5f532a161aa7&amp;source=constructor" frameborder="0"></iframe>
+    </div>
+</div>

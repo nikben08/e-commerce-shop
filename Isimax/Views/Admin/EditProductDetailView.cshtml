@@ -1,0 +1,231 @@
+﻿@using Isimax.Models
+@{
+    Layout =  "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row admin_panel-header">
+        <div class="col-md-4 header-title">
+            Isimax Administration
+        </div>
+        <div class="col-md-1 offset-md-7 logout-button">
+            <form action="/Admin/Logout" method="post">
+                <button>Çıkış Yap</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row dashboard-title">
+        <div class="col-md-12">
+            Add Product
+        </div>
+    </div>
+
+    <div class="row">
+        <form method="post" asp-action="UpdateProduct" enctype="multipart/form-data">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">Id:</label>
+                            <input type="text" name="Id" class="form-control" placeholder="" value="@Model.product.Id" readonly>
+                          </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">Ürün kodu:</label>
+                            <input type="text" name="Code" class="form-control" placeholder="" value="@Model.product.Code">
+                          </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">Adı:</label>
+                            <input type="text" name="Title" class="form-control" placeholder="" value="@Model.product.Title">
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">Fiyat:</label>
+                            <input type="text" name="Price" class="form-control" placeholder="" value="@Model.product.Price">
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">Açıklaması:</label>
+                            <input type="text" name="Desc" class="form-control" placeholder="" value="@Model.product.Desc">
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">(300x280) Görsel:</label>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <input type="file" name="Image" class="form-control">
+                                </div>
+                                <div class="col-md-3 uploaded_image_name">
+                                    <input type="text" value="@Model.product.Image" readonly/>
+                                </div>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-1 mt-1">
+                            <label class="form-label">Kategori:</label>
+                            <select class="form-select" name="CategoryId" aria-label="Default select example">
+                                <option value="@Model.categories[0].Id" selected>@Model.categories[0].Name</option>
+                                @{
+                                    for(int i = 1; i < Model.categories.Count; i++)
+                                    {
+                                          <option value="@Model.categories[i].Id">@Model.categories[i].Name</option>               
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-2 productParametersInputGroup">
+                    @{
+                        if(@Model.ProductParameterName.Count == 1)
+                        {
+                            <div class='row'>
+                                <div class='col-md-6'> 
+                                    <label class="form-label">Ürün Parametreleri</label>
+                                    <div class="row">
+                                        <div class="col-md-5"> 
+                                            <input type='text' name='ProductParameterName' class='form-control' value="@Model.ProductParameterName[0]" required> 
+                                        </div>
+                                        <div class="col-md-5"> 
+                                            <input type='text' name='ProductParameterValue' class='form-control' value="@Model.ProductParameterValue[0]" required> 
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>                            
+                        }else{
+                            <div class='row'>
+                                <div class='col-md-6'> 
+                                    <label class="form-label">Ürün Parametreleri</label>
+                                    <div class="row">
+                                        <div class="col-md-5"> 
+                                            <input type='text' name='ProductParameterName' class='form-control' value="@Model.ProductParameterName[0]" required> 
+                                        </div>
+                                        <div class="col-md-5"> 
+                                            <input type='text' name='ProductParameterValue' class='form-control' value="@Model.ProductParameterValue[0]" required> 
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                            for(int i = 1; i < @Model.ProductParameterName.Count; i++)
+                            {
+                                <div class='row mt-2'>
+                                    <div class='col-md-6'>
+                                        <div class='row'>
+                                            <div class='col-md-5'>
+                                                <input type='text' name='ProductParameterName' class='form-control' value="@Model.ProductParameterName[i]" required>
+                                            </div>
+                                            <div class='col-md-5'>
+                                                <input type='text' name='ProductParameterValue' class='form-control' value="@Model.ProductParameterValue[i]" required>
+                                            </div> 
+                                            <div class='col-md-1'>
+                                                <button type='button' class='product_parameter-delete_button'><i class='fa-solid fa-xmark'></i></button>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            }
+                        }
+                    }
+
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                              <button id="addProductParameterButton" type="button" class="btn btn-primary">Ürün Parametresi Ekle</button>
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row recommendedProductInputGroup">
+                    @{
+                        if (Model.recommProducts.Length > 0)
+                        {
+                            for(int i = 0; i < Model.recommProducts.Length; i++)
+                            {
+                                @if (i == 0)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Tavsiye Edilen Ürünler</label>
+                                            <div class="input-group mb-3">
+                                                <input type="number" name="RecommendedProduct" class="form-control" value="@Model.recommProducts[i]">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class='row'>
+                                        <div class='col-md-6'> 
+                                            <div class='input-group mb-3'> 
+                                                <input type='number' name='RecommendedProduct' class='form-control' value="@Model.recommProducts[i]"> 
+                                                <div class='input-group-prepend'> 
+                                                    <div class='input-group-text'> 
+                                                        <button type='button' class='recommended_product-delete_button'><i class='fa-solid fa-xmark'></i></button> 
+                                                    </div> 
+                                                </div> 
+                                            </div> 
+                                        </div> 
+                                    </div>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label">Tavsiye Edilen Ürünler</label>
+                                    <div class="input-group mb-3">
+                                        <input type="number" name="RecommendedProduct" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                              <button id="addRecommendedProductButton" type="button" class="btn btn-primary">Tavsiye Edilen Ürünü ekle</button>
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-2 mt-2">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>

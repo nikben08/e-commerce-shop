@@ -1,0 +1,204 @@
+﻿@using Isimax.Models
+@{
+    Layout =  "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row admin_panel-header">
+        <div class="col-md-4 header-title">
+            Isimax Administration
+        </div>
+        <div class="col-md-1 offset-md-7 logout-button">
+            <form action="/Admin/Logout" method="post">
+                <button>Çıkış Yap</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row dashboard-section">
+        <div class="col-md-8">
+             <div class="row title">
+                 <div class="col-md-12">
+                     Katalog
+                 </div>
+             </div>
+             <div class="row item">
+                 <div class="col-md-8">
+                     Kategorileri
+                 </div>
+                 <div class="col-md-2">
+                     <form action="/Admin/CreateCategoryView">
+                        <button type="submit" class="btn btn-success">Ekle</button>
+                     </form>
+                 </div>
+                 <div class="col-md-2">
+                     <form action="/Admin/EditCategoryView">
+                        <button type="submit" class="btn btn-primary">Incele</button>
+                     </form>
+                 </div>
+             </div>
+             <div class="row item">
+                 <div class="col-md-8">
+                     Ürünler
+                 </div>
+                 <div class="col-md-2">
+                     <form action="CreateProductView">
+                        <button type="submit" class="btn btn-success">Ekle</button>
+                     </form>
+                 </div>
+                 <div class="col-md-2">
+                    <form action="EditProductView">
+                        <button type="submit" class="btn btn-primary">Incele</button>
+                    </form>
+                 </div>
+             </div>
+             <div class="row item">
+                 <div class="col-md-8"> 
+                    Ürün Fiyatları
+                 </div>
+                 <div class="col-md-2">
+                     <form action="ShowAllProductsPrice" method="post">
+                        <button type="submit" class="btn btn-success">Göster</button>
+                     </form>
+                 </div>
+                 <div class="col-md-2">
+                    <form action="HideAllProductsPrice" method="post">
+                        <button type="submit" class="btn btn-primary">Sakla</button>
+                    </form>
+                 </div>
+             </div>
+        </div>
+    </div>
+
+    <div class="row dashboard-section">
+        <div class="col-md-8">
+             <div class="row title">
+                 <div class="col-md-12">
+                     Oturum Açma Tarihi
+                 </div>
+             </div>
+             <div class="row item">
+                 <div class="col-md-8">
+                     Oturum Açma Liste
+                 </div>
+                 <div class="col-md-2">
+                     <form action="LoginHistoryView">
+                        <button type="submit" class="btn btn-success">Incele</button>
+                     </form>
+                 </div>
+             </div>
+        </div>
+    </div>
+
+    <div class="row dashboard-section">
+        <div class="col-md-8">
+             <div class="row title">
+                 <div class="col-md-12">
+                     Admin Kullancılar
+                 </div>
+             </div>
+             <div class="row item">
+                 <div class="col-md-8">
+                     Kullancılar
+                 </div>
+                 <div class="col-md-2">
+                     <form action="CreateUserView">
+                        <button type="submit" class="btn btn-success">Ekle</button>
+                     </form>
+                 </div>
+                 <div class="col-md-2">
+                     <form action="EditUserView">
+                        <button type="submit" class="btn btn-primary">Incele</button>
+                     </form>
+                 </div>
+             </div>
+        </div>
+    </div>
+
+    <div class="row dashboard-section">
+        <div class="col-md-8">
+             <div class="row title">
+                 <div class="col-md-12">
+                     İletişim Formları
+                 </div>
+             </div>
+             <div class="row item">
+                 <div class="col-md-8">
+                     Formları
+                 </div>
+                 <div class="col-md-2">
+                     <form action="EditContactFormsView">
+                        <button type="submit" class="btn btn-primary">Incele</button>
+                     </form>
+                 </div>
+             </div>
+        </div>
+    </div>
+    
+    <div class="row dashboard-section">
+        <div class="col-md-8">
+             <div class="row title">
+                 <div class="col-md-12">
+                     Hakkımızda
+                  </div>
+             </div>
+             <div class="row item">
+                 <div class="col-md-8">
+                     Hakkımızda Sayfanın Veriler
+                 </div>
+                 <div class="col-md-2">
+                    <form action="EditAboutUsPageView">
+                        <button type="submit" class="btn btn-primary">Incele</button>
+                    </form>
+                 </div>
+             </div>
+        </div>
+    </div>
+
+    <div class="row dashboard-section">
+        <div class="col-md-8">
+             <div class="row title">
+                 <div class="col-md-12">
+                     Kalite Belgelerimiz
+                 </div>
+             </div>
+             <div class="row item">
+                 <div class="col-md-8">
+                     Belgeler
+                 </div>
+                 <div class="col-md-2">
+                     <form action="CreateQualityCertificateView">
+                        <button type="submit" class="btn btn-success">Ekle</button>
+                     </form>
+                 </div>
+                 <div class="col-md-2">
+                     <form action="EditQualityCertificateView">
+                        <button type="submit" class="btn btn-primary">Incele</button>
+                     </form>
+                 </div>
+             </div>
+        </div>
+    </div>
+
+
+    <div class="row dashboard-section">
+        <div class="col-md-8">
+             <div class="row title">
+                 <div class="col-md-12">
+                     Anasayfa
+                  </div>
+             </div>
+             <div class="row item">
+                 <div class="col-md-8">
+                     Anasayfanın Veriler
+                 </div>
+                 <div class="col-md-2">
+                    <form action="EditHomePageView">
+                        <button type="submit" class="btn btn-primary">Incele</button>
+                    </form>
+                 </div>
+             </div>
+        </div>
+    </div>
+
+</div>

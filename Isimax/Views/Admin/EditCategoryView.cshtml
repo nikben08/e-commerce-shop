@@ -1,0 +1,60 @@
+﻿@using Isimax.Models
+@{
+    Layout =  "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row admin_panel-header">
+        <div class="col-md-4 header-title">
+            Isimax Administration
+        </div>
+        <div class="col-md-1 offset-md-7 logout-button">
+            <form action="/Admin/Logout" method="post">
+                <button>Çıkış Yap</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row dashboard-title">
+        <div class="col-md-12">
+            Değiştirilecek kategoriyi seçiniz
+        </div>
+    </div>
+
+    <div class="row search-form">
+        <form action="/Admin/SearchCategory" method="post" >
+            <div class="col-md-8">
+                <div class="input-group">
+                        <input type="text" name="query" class="form-control" placeholder="Search category" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row data-list">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+                @foreach (var item in Model){
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <td><img src="/uploads/@item.Image" /></td>
+                        <td>
+                            <button type="button" data-categoryid="@item.Id" class="btn btn-danger deleteCategory">Delete</button>
+                            <button type="button" data-categoryid="@item.Id" class="btn btn-primary changeCategory">Change</button>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+
+
+</div>

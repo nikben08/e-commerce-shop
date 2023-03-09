@@ -1,0 +1,159 @@
+﻿@using Isimax.Models
+@{
+    Layout =  "~/Views/Shared/_CatalogLayout.cshtml";
+    ViewData["Title"] = "Ürünlerimiz";
+    ViewData["Description"] = @ViewBag.categoryName;
+    ViewData["Keywords"] = "Ürünlerimiz,katalog,aydınlatma kataloğu,aydınlatma ürünleri," + @Model.productCategoryName;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 catalog-header">
+            <div class="row">
+                <div class="col-md-9 category-path">
+                    <ul>
+                        <li><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i> </li>
+                        <li><a href="/catalog">Ürünler</a> <i class="fa-solid fa-angle-right"></i> </li>
+                        <li><a href="/catalog?CategoryId=@Model.product.CategoryId">@Model.productCategoryName</a> <i class="fa-solid fa-angle-right"></i> </li>
+                        <li translate="no">@Model.product.Code</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row product-container">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-6 product-img">
+                    <img src="/uploads/@Model.product.Image" />
+                </div>
+                <div class="col-md-6">
+                    <div class="row product-name">
+                        <div class="col-md-12">
+                            @Model.product.Title
+                        </div>
+                    </div>
+                    <div class="row product-id">
+                        <div class="col-md-12">
+                            Ürün Kodu: @Model.product.Code
+                        </div>
+                    </div>
+                    <div class="row product-price">
+                        <div class="col-md-12">
+                            @{
+                                if (@Model.product.PriceIsVisible) {
+                                    @Model.product.Price <a>TL</a>
+                                }
+                             }
+                        </div>
+                    </div>
+
+                    <div class="row product-parameters">
+                        <div class="col-md-12">
+                            <table>
+                            @{
+                                for(int i = 0; i < @Model.productParametersName.Count; i++)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Model.productParametersName[i]:
+                                        </td>
+                                        <td>
+                                            @Model.productParametersValue[i]
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            </table>
+                        </div>
+                    </div>
+
+                   <div class="row mt-4 product-description">
+                        <div class="col-md-12">
+                            @Model.product.Desc
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4 mx-auto my-auto justify-content-center products-carousel">
+        <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+                @{
+                    if (@Model.recommendedProducts.Count > 0)
+                    {
+                        for (int i = 0; i < @Model.recommendedProducts.Count; i++)
+                        {
+                            if (i == 0)
+                            {
+                                @Html.Raw("<div class='carousel-item active'>")
+                            }
+                            else
+                            {
+                                @Html.Raw("<div class='carousel-item'>")
+                            }
+
+                            <div class="col-md-3 col-12">
+                                <div class="catalog-item">
+                                    <a href="/catalog/DetailView?ProductId=@Model.recommendedProducts[i].Id">
+                                        <div class="catalog-item-img">
+                                            <img src="/uploads/@Model.recommendedProducts[i].Image"/>
+                                        </div>
+                                    </a>
+                                    <div class="catalog-item-title">
+                                        <a href="DetailView?ProductId=@Model.recommendedProducts[i].Id"> @Model.recommendedProducts[i].Title </a>
+                                    </div>
+                                    <div translate="no" class="catalog-item-id">
+                                        @Model.recommendedProducts[i].Code
+                                    </div>
+                                    <div class="catalog-item-price">
+                                        @{
+                                            if (@Model.recommendedProducts[i].PriceIsVisible)
+                                            {
+                                                @Model.recommendedProducts[i].Price  @Html.Raw("TL")
+                                            }
+                                        }    
+                                    </div>
+                                </div>
+                            </div>
+                            @Html.Raw("</div>")
+                        }
+                    }
+                    else
+                    {
+                        <div class='carousel-item active'>
+                            <div class="col-md-3 col-12">
+                                <div class="catalog-item">
+                                    <div class="catalog-item-img">
+                                        <img src="/img/item1.png"/>
+                                    </div>
+                                    <div class="catalog-item-title">
+                                        Sample Product
+                                    </div>
+                                    <div class="catalog-item-id">
+                                        Max 301
+                                    </div>
+                                    <div class="catalog-item-price">
+                                        740 TL  
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+            <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </a>
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,200 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+
+.product-container {
+    margin: 0;
+    padding: 0;
+    padding: 20px;
+    background-color: #FFFFFF;
+}
+
+    .product-container .product-img {
+        background-color: #F5F2EC;
+        text-align: center;
+        height: 470px;
+    }
+
+    .product-container .product-name {
+        font-size: 20px;
+        font-family: 'Arial';
+        font-weight: 400;
+    }
+
+    .product-container .product-id {
+        font-size: 14px;   
+        font-family: Helvetica, sans-serif;
+        color: #B3B4B5;
+    }
+
+    .product-container .product-price {
+        font-size: 30px;
+        margin-top: 30px;
+        font-family: Helvetica, sans-serif;
+        color: #00AA9B;
+    }
+
+    .product-container .product-parameters {
+        margin-top: 60px;
+    }
+
+    .product-container .product-parameters table{
+        width: 100%;
+    }
+
+    .product-container .product-parameters table td {
+        border-top: 1px solid #D9D9D9;
+        padding: 8px 0px 8px 0px;
+        font-size: 18px;
+        font-family: "Manrope";
+        letter-spacing: 0.15em;
+        width: 50%;
+    }
+
+        .product-container .product-parameters table tr td:first-child {
+            border-right: 1px solid #D9D9D9;
+            border-bottom: 1px solid #D9D9D9;
+            padding-right: 8px;
+            text-align: right;
+        }
+
+        .product-container .product-parameters table tr td:last-child {
+            text-align: center;
+            border-bottom: 1px solid #D9D9D9;
+        }
+
+    .product-container .product-description {
+        font-size: 18px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-family: sans-serif, 'Didact Gothic';
+    }
+    
+
+.product-recommendation {
+    margin-top: 20px;
+    height: 300px;
+    background-color: #FFFFFF;
+}
+ 
+
+.product-recommendation {
+    padding: 10px;
+    text-align: center;
+}
+
+    .product-recommendation .item {
+    }
+
+        .product-recommendation .item .img {
+            height: 230px;
+        }
+
+            .product-recommendation .item .img img {
+                max-height: 230px;
+                max-width: 100%;
+            }
+
+        .product-recommendation .item .title {
+            font-size: 17px;
+            padding-top: 3px;
+            font-family: 'Jost', sans-serif;
+        }
+
+
+
+@media (max-width: 767px) {
+    .product-container .product-name {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .product-container .product-id {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .product-container .product-description {
+        text-align: center;
+        margin-top: 10px;
+        font-family: Arial;
+    }
+
+    .product-container .product-price {
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+
+.products-carousel {
+    margin-left: -10px !important;
+    margin-right: -10px !important;
+}
+
+.carousel-inner {
+    background-color: #FFFFFF;
+}
+
+.carousel-item {
+    background-color: #FFFFFF;
+    border: none;
+}
+
+.catalog-item-img {
+    border: none;
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+    display: flex;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    background-color: red;
+    border-radius: 100px;
+}
+
+.carousel-control-prev {
+    margin-left: -90px;
+    margin-top: -15px;
+}
+
+.carousel-control-next {
+    margin-right: -90px;
+    margin-top: -15px;
+}
+
+.carousel-control-next-icon, .carousel-control-prev-icon {
+    background-size: 60% 60%;
+    width: 50px;
+    height: 50px;
+}
+/* medium and up screens */
+@media (min-width: 768px) {
+    .carousel-inner .carousel-item-end.active, .carousel-inner .carousel-item-next {
+        transform: translateX(25%);
+    }
+
+    .carousel-inner .carousel-item-start.active,
+    .carousel-inner .carousel-item-prev {
+        transform: translateX(-25%);
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-control-prev {
+        margin-left: -5px;
+        margin-top: 0px;
+    }
+
+    .carousel-control-next {
+        margin-right: -5px;
+        margin-top: 0px;
+    }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start {
+    transform: translateX(0);
+}

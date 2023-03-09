@@ -1,0 +1,136 @@
+﻿@using Isimax.Models
+@{
+    Layout =  "~/Views/Shared/_CatalogLayout.cshtml";
+    ViewData["Title"] = "Ürünlerimiz";
+    ViewData["Description"] = @ViewBag.categoryName;
+    ViewData["Keywords"] = "Ürünlerimiz,katalog,aydınlatma kataloğu,aydınlatma ürünleri," + @ViewBag.categoryName;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 catalog-header">
+            <div class="row">
+                <div class="col-md-9 col-8 category-path">
+                    <ul>
+                        <li><i class="fa-solid fa-house"></i> <i class="fa-solid fa-angle-right"></i> </li>
+                        <li><a href="/catalog">Ürünler</a></li>
+                        @{
+                            if (ViewBag.categoryName != null)
+                            {
+                                <li><i class="fa-solid fa-angle-right"></i> @ViewBag.categoryName </li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <div class="col-md-3 col-4 sort-select">
+                      <select id="sort">
+                        <option value="1">Gelişmiş Sıralama</option>
+                        @{
+                            if((Model.Products.Count != 0 && Model.Products[0].PriceIsVisible) || (Model.Products.Count == 0))
+                            {
+                                <option value="2">Fiyata Göre Artan</option>
+                                <option value="3">Fiyata Göre Azalan</option>
+                            }
+                        }
+                        <option value="4">Yeni Gelenler</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3  d-none d-sm-none d-md-block side-bar-menu">
+            <div class="row">
+                <div class="col-md-12 side-bar-menu-title">
+                    Kategoriler
+                </div>
+            </div>
+            <div class="row side-bar-menu-categories">
+                <div class="col-md-12">
+                    <ul>
+                        @foreach (var item in Model.Categories){
+                            <li class="category-name" data-categoryid="@item.Id">@item.Name</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-block d-sm-block d-md-none side-bar-menu">
+            <div class="row">
+                <div class="col-9 col-sm-9 side-bar-menu-title">
+                    Kategoriler 
+                </div>
+                <div class="col-3 col-sm-3" id="showCategoriesButton">
+                    <i class="fa-solid fa-angle-down"></i>
+                </div>
+            </div>
+            <div class="row mobile-side-bar-menu-categories">
+                <div class="col-md-12">
+                    <ul>
+                        @foreach (var item in Model.Categories){
+                            <li class="category-name" data-categoryid="@item.Id">@item.Name</li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-9 catalog">
+            <div class="row">             
+                @{
+                    foreach (var item in Model.Products)
+                    {
+                        <div class="col-md-4">
+                            <div class="catalog-item">
+                                <a href="/catalog/DetailView?ProductId=@item.Id">
+                                    <div class="catalog-item-img">
+                                        <img src="/uploads/@item.Image"/>
+                                    </div>
+                                </a>
+                                <div class="catalog-item-title">
+                                    <a href="/catalog/DetailView?ProductId=@item.Id"> @item.Title </a>
+                                </div>
+                                <div translate="no" class="catalog-item-id">
+                                    @item.Code
+                                </div>
+                                <div class="catalog-item-price">
+                                @{
+                                    if (item.PriceIsVisible) {
+                                        @item.Price <a>TL</a>
+                                    }
+                                }
+                                </div>
+                            </div>
+                        </div> 
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="row pagination">
+            <div class="col-md-8 offset-md-3">
+                <div>
+                    @{
+                        if (!ViewBag.firstPage){
+                            <i class="fa-solid fa-caret-left fa-2x"></i>
+                        }
+                    }
+                    
+                </div>
+                <div>
+                    <input type="text" value="3" class="page_number" id="pageNumber" readonly />
+                </div>
+                <div>
+                    @{
+                        if (!ViewBag.lastPage)
+                        {
+                           <i class="fa-solid fa-caret-right fa-2x"></i> 
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

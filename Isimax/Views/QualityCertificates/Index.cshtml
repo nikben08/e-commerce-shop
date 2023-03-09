@@ -1,0 +1,36 @@
+﻿@using Isimax.Models
+@{
+    Layout =  "~/Views/Shared/_CatalogLayout.cshtml";
+    ViewData["Title"] = "Kalite Belgelirimiz";
+    ViewData["Description"] = "kalite belgelerimiz";
+    ViewData["Keywords"] = "kalite belgelerimiz";
+}
+
+<div class="row">
+    <div class="col-md-12 quality_certificates-header-banner">
+        <div class="row">
+            <div class="col-md-12 title">Kalite Belgelirimiz</div>
+        </div>
+    </div>
+</div>
+
+<div class="row quality_certificates">
+    @{
+
+        int i = 1;
+        foreach (var item in Model)
+        {
+            <div class="col-md-3 catalog-item">
+                <div class="catalog-item-img">
+                    <img class="mklbItem" src="/uploads/@item.Image" data-gallery="myGal" />
+                </div>
+            </div>
+            if (i == 4){
+                i = 1;
+                @Html.Raw("</div><div class='row quality_certificates'>");
+            }else{
+                i++;
+            }
+        }
+    }
+</div>

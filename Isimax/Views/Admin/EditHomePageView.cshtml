@@ -1,0 +1,209 @@
+﻿@using Isimax.Models
+@{
+    Layout =  "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row admin_panel-header">
+        <div class="col-md-4 header-title">
+            Isimax Administration
+        </div>
+        <div class="col-md-1 offset-md-7 logout-button">
+            <form action="/Admin/Logout" method="post">
+                <button>Çıkış Yap</button>
+            </form>
+        </div>
+    </div>
+
+     <div class="row">
+        <form method="post" asp-action="EditHomePageData" enctype="multipart/form-data">
+            <div class="col-md-12">
+                
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">(1500x750) Slider arka planı 1 </label>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <input type="file" name="SliderImage1" class="form-control">
+                                </div>
+                                <div class="col-md-3 uploaded_image_name">
+                                    <input type="text" value="@Model.SliderImage1" readonly>
+                                </div>
+                            </div>  
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">(1500x750) Slider arka planı 2</label>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <input type="file" name="SliderImage2" class="form-control">
+                                </div>
+                                <div class="col-md-3 uploaded_image_name">
+                                    <input type="text" value="@Model.SliderImage2" readonly>
+                                </div>
+                            </div> 
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">(1500x750) Slider arka planı 3</label>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <input type="file" name="SliderImage3" class="form-control">
+                                </div>
+                                <div class="col-md-3 uploaded_image_name">
+                                    <input type="text" value="@Model.SliderImage3" readonly>
+                                </div>
+                            </div> 
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">Anasayfanın Kategori 1:</label>
+                            <input type="text" name="HomePageCategory" class="form-control" value="@Model.Category1" required>
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">Anasayfanın Kategori 2:</label>
+                            <input type="text" name="HomePageCategory" class="form-control" value="@Model.Category2" required>
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">Anasayfanın Kategori 3:</label>
+                            <input type="text" name="HomePageCategory" class="form-control" value="@Model.Category3" required>
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">Anasayfanın Kategori 4:</label>
+                            <input type="text" name="HomePageCategory" class="form-control" value="@Model.Category4" required>
+                          </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row homePageProductsInputGroup" id="homePageProductsInputGroup">
+                    @{
+                        if (Model.Products.Length > 0)
+                        {
+                            for(int i = 0; i < Model.Products.Length; i++)
+                            {
+                                @if (i == 0)
+                                {
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label class="form-label">En Popüler Ürünler</label>
+                                            <div class="input-group mb-3">
+                                                <input type="text" name="HomePageProduct" class="form-control" value="@Model.Products[i]">
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class='row'>
+                                        <div class='col-md-6'> 
+                                            <div class='input-group mb-3'> 
+                                                <input type='text' name='HomePageProduct' class='form-control' value="@Model.Products[i]"> 
+                                                <div class='input-group-prepend'> 
+                                                    <div class='input-group-text'> 
+                                                        <button type='button' class='home_page_product-delete_button'><i class='fa-solid fa-xmark'></i></button> 
+                                                    </div> 
+                                                </div> 
+                                            </div> 
+                                        </div> 
+                                    </div>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label">En Populer Ürünler</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="HomePageProduct" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                              <button id="addHomePageProduct" type="button" class="btn btn-primary">Ürünü ekle</button>
+                          </div>
+                    </div>
+                </div>
+
+                
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">Anasayfanın Afişi Başlık:</label>
+                            <input type="text" name="BannerTitle" class="form-control" value="@Model.BannerTitle" required>
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">Anasayfanın Afişi Metin:</label>
+                            <input type="text" name="BannerText" class="form-control" value="@Model.BannerText" required>
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">(1500x300) Görsel:</label>
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <input type="file" name="BannerImage" class="form-control">
+                                </div>
+                                <div class="col-md-3 uploaded_image_name">
+                                    <input type="text" value="@Model.BannerImage" readonly>
+                                </div>
+                            </div> 
+                          </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-2 mt-2">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>

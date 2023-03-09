@@ -1,0 +1,94 @@
+﻿@using Isimax.Models
+@{
+    Layout = "~/Views/Shared/_CatalogLayout.cshtml";
+
+    @if (Model.Text.Length > 150)
+    {
+        ViewData["Description"] = @Model.Text.Substring(0, 150);
+    }
+    else
+    {
+        ViewData["Description"] = @Model.Text.Substring(0, Model.Text.Length - 1);
+    }
+    ViewData["Keywords"] = "Hakkımızda, ışımax misyon,ışımax vizon,ışımax değerlerimiz,Aydınlatma ürünleri,Casting,döküm";
+    ViewData["Title"] = "Hakkımızda";
+}
+
+<div class="row">
+    <div class="d-none d-md-block col-md-12 about_us-header-banner"  style="background-image: url('/uploads/@Model.BannerImage');">
+        <div class="title">Hakkımızda</div>
+    </div>
+
+    <div class="d-md-none d-block about_us-header-banner"  style="background-image: url('/img/ww1.png');">
+        <div class="title">Hakkımızda</div>
+    </div>
+</div>
+
+
+<div class="row about_us-desc">
+    <div class="col-md-10 offset-md-1">
+       @Model.Text
+    </div>
+</div>
+
+<div class="row about_us-vision">
+    <div class="col-md-4">
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <img src="/img/mission.png" />
+            </div>
+        </div>
+
+        <div class="row title">
+            <div class="col-md-12">
+                Misyonumuz
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-12 desc">
+                @Model.MissionText
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <img src="/img/vision.png" />
+            </div>
+        </div>
+
+        <div class="row title">
+            <div class="col-md-12">
+                Vizyonumuz
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 desc">
+                @Model.VisionText
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <img src="/img/values.png" />
+            </div>
+        </div>
+
+        <div class="row title">
+            <div class="col-md-12">
+                Değerlerimiz
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 desc">
+                @Model.ValuesText
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+﻿@using Isimax.Models
+@{
+    Layout =  "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row admin_panel-header">
+        <div class="col-md-4 header-title">
+            Isimax Administration
+        </div>
+        <div class="col-md-1 offset-md-7 logout-button">
+            <form action="/Admin/Logout" method="post">
+                <button>Çıkış Yap</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row dashboard-title">
+        <div class="col-md-12">
+            Contact Form
+        </div>
+    </div>
+
+     <div class="row">
+        <form method="post" asp-action="UpdateCategory" enctype="multipart/form-data">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <div class="mb-1 mt-1">
+                    <label class="form-label">Contact Form Id:</label>
+                    <input type="text" name="Id" class="form-control" placeholder="" value="@Model.Id" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">Name:</label>
+                            <input type="text" name="Name" class="form-control" value="@Model.Name" readonly>
+                          </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">E-mail:</label>
+                            <input type="text" name="Name" class="form-control" value="@Model.Email" readonly>
+                          </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">Tel:</label>
+                            <input type="text" name="Tel" class="form-control" value="@Model.Tel" readonly>
+                          </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">Msg:</label>
+                            <textarea name="Tel" class="form-control" readonly>@Model.Msg</textarea>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

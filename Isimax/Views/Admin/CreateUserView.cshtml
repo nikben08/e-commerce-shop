@@ -1,0 +1,53 @@
+﻿@page
+@{
+    Layout =  "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row admin_panel-header">
+        <div class="col-md-4 header-title">
+            Isimax Administration
+        </div>
+        <div class="col-md-1 offset-md-7 logout-button">
+            <form action="/Admin/Logout" method="post">
+                <button>Çıkış Yap</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row dashboard-title">
+        <div class="col-md-12">
+            Yönetici Kullanıcı Ekle
+        </div>
+    </div>
+
+     <div class="row">
+        <form action="/Admin/CreateUser" method="post">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">Email</label>
+                            <input type="email" name="Email" class="form-control" required>
+                          </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                          <div class="mb-1 mt-1">
+                            <label class="form-label">Şifre</label>
+                            <input type="text" name="Password" class="form-control" required>
+                          </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-2 mt-2">
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>

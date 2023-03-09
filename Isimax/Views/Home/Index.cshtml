@@ -1,0 +1,165 @@
+﻿@{
+    ViewData["Title"] = "Işımax Aydınlatma  San. Tic. Ltd. Şti.";
+    ViewData["Description"] = "Işımax Aydınlatama olarak aydınlatma ürünü imalatı yapmaktayız. Profesyonel ve alanında uzmanlaşmış ekibimizle 81 ilimizde ve yurt dışında geniş ürün yelpazemiz izle hizmet vermekteyiz.";
+    ViewData["Keywords"] = "ışımax aydınlatma, aydınlatma ürünleri,Ürün,Aydınlatma direği,modern aydınlatmalar,aydınlatma direkeri,aplikler, led aydınlatma,çim aydınlatma, set üstü armatür ,dış aydınlatma, paslanmaz aydınlatmalar, dış mekan aydınlatma, bahçe aydınlatma direkleri, ürünler, modern aydınlatmalar";
+}
+
+ <div id="carouselExampleIndicators" class="carousel mobile-carousel slide d-block d-sm-block d-md-none" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/uploads/@Model.SliderImage1" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/uploads/@Model.SliderImage2" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="/uploads/@Model.SliderImage3" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+<div class="container">
+    <div class="showcase">
+        <div class="row mt-3 showcase-title">
+            <div class="col-md-12">
+                <h2>Kategorileri İncele</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 showcase-item">
+                <a href="/catalog?CategoryId=@Model.Category1.Id">
+                    <div class="showcase-item-img">
+                        <img src="/uploads/@Model.Category1.Image"/>
+                        <div class="showcase-item-overlay">
+                        
+                        </div>
+                        <div class="showcase-item-tag">
+                            @Model.Category1.Name
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+       
+            <div class="col-md-3 showcase-item">
+                <a href="/catalog?CategoryId=@Model.Category2.Id">
+                    <div class="showcase-item-img">
+                        <img src="/uploads/@Model.Category2.Image"/>
+                        <div class="showcase-item-overlay">
+                        
+                        </div>
+                        <div class="showcase-item-tag">
+                            @Model.Category2.Name
+                        </div>
+                    </div>
+                </a>
+            </div>
+        
+            <div class="col-md-3 showcase-item">
+                <a href="/catalog?CategoryId=@Model.Category3.Id">
+                    <div class="showcase-item-img">
+                        <img src="/uploads/@Model.Category3.Image"/>
+                        <div class="showcase-item-overlay">
+                       
+                        </div>
+                        <div class="showcase-item-tag">
+                            @Model.Category3.Name
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-3 showcase-item">
+                <a href="/catalog?CategoryId=@Model.Category4.Id">
+                    <div class="showcase-item-img">
+                        <img src="/uploads/@Model.Category4.Image"/>
+                        <div class="showcase-item-overlay">
+                        
+                        </div>
+                        <div class="showcase-item-tag">
+                            @Model.Category4.Name
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="row showcase-footer">
+            <div class="col-md-12">
+                <form action="/Catalog">
+                    <button>TÜMÜNÜ GÖRÜNTÜLE</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <div style="background-image: url('/uploads/@Model.BannerImage');" class="row d-none d-sm-none d-md-block banner no-gutters">
+        <div class="col-md-6 offset-md-7">
+            <h1> @Model.BannerTitle </h1>
+            <p> @Model.BannerText</p>
+            <p><a class="get_contact-link" href="/contact">İletışıme geçiniz</a></p>
+        </div>
+    </div>
+
+<div class="container">
+    <div class="catalog">
+        <div class="row catalog-title">
+            <div class="col-md-12">
+                <h2>En Popüler Ürünler</h2>
+            </div>
+        </div>
+
+        <div class="row">
+            @{
+                int i = 1;
+                foreach (var item in Model.Products)
+                {
+                    <div class="col-md-3 catalog-item">
+                        <a href="/catalog/DetailView?ProductId=@item.Id">
+                            <div class="catalog-item-img">
+                                <img src="/uploads/@item.Image">
+                            </div>
+                        </a>
+                        <div class="catalog-item-title">
+                            <a href="/catalog/DetailView?ProductId=@item.Id">@item.Title</a>
+                        </div>
+                        <div class="catalog-item-id">
+                            @item.Code
+                        </div>
+                        <div class="catalog-item-price">
+                        @{
+                            if (item.PriceIsVisible) {
+                                @item.Price <a>TL</a>
+                            }
+                        }
+                        </div>
+                        
+                    </div>
+                    if (i == 4){
+                        i = 1;
+                        @Html.Raw("</div><div class='row'>");
+                    }else{
+                        i++;
+                    }
+                }
+            }
+        </div>
+    </div>
+
+</div>
